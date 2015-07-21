@@ -1,0 +1,36 @@
+<head>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+  
+  <%= form_for :route, url: routes_path do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <div id="routes">
+        <%= f.label :routes %><br>
+        <%= f.text_field :routes, multiple: true %>
+      </div>
+      <button type="button" id="add">Add field</button>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+    <script type="text/javascript">
+
+      $("#add").click(function (e) {
+        $("#routes").append(
+          '<div id="routes"><%= f.text_field :routes, multiple: true %></div>')
+      });
+
+    </script>
+
+  <% end %>
+
+</body>
